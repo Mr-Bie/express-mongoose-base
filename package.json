@@ -1,0 +1,29 @@
+{
+  "name": "breeze",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ajv": "^8.11.0",
+    "ajv-errors": "^3.0.0",
+    "ajv-formats": "^2.1.1",
+    "aws-sdk": "^2.1247.0",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "i18next": "^22.0.4",
+    "i18next-fs-backend": "^2.0.0",
+    "i18next-http-backend": "^2.0.1",
+    "i18next-http-middleware": "^3.2.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.6.1",
+    "nodemailer": "^6.8.0"
+  }
+}

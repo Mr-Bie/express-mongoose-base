@@ -1,0 +1,15 @@
+{
+  "LOGIN_SUCCESS": "لاگین با موفقیت انچام شد",
+  "EMAIL_OTP_MESSAGE": "کد یکبار مصرف شما :  ",
+  "EMAIL_OTP_SUBJECT": "کد یکبار مصرف برای ورود",
+  "NEW_OTP_SENT_RESPONSE": "کد یکبار مصرف جدید فرستاده شد",
+  "ERROR_OTP_NOT_EXPIRED": "کد یکبار مصرف قبلی منقضی نشده است",
+  "ERROR_OTP_EXPIRED": "کد یکبار مصرف شما منقضی شده است",
+  "ERROR_VALIDATION_FAILED": "مقادیر درخواست اشتباه است",
+  "ERROR_USER_NOT_FOUND": "کاربری با این اطلاعات یافت نشد",
+  "ERROR_EMAIL_NOT_SENT": "ایمیل فرستاده نشد",
+  "VALIDATION_OTP_IDENTIFIER_REQUIRED": "فیلد موبایل یا ایمیل (identifier) باید مقدار داشته باشد",
+  "VALIDATION_OTP_IDENTIFIER_INVALID": "فیلد باید ایمیل یا موبایل باشد",
+  "VALIDATION_OTP_OTP_INVALID": "مقدار کد یکبار مصرف اشتباه است",
+  "VALIDATION_OTP_OTP_REQUIRED": "کد یکبار مصرف باید مقدار داشته باشد"
+}

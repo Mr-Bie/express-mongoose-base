@@ -1,0 +1,15 @@
+{
+  "LOGIN_SUCCESS": "Logged in successfully!",
+  "EMAIL_OTP_MESSAGE": "Your otp code is ",
+  "EMAIL_OTP_SUBJECT": "Login otp",
+  "NEW_OTP_SENT_RESPONSE": "New otp has been sent!",
+  "ERROR_OTP_NOT_EXPIRED": "Last sent otp is not expired yet",
+  "ERROR_OTP_EXPIRED": "Otp is expired ",
+  "ERROR_VALIDATION_FAILED": "Request body validation failed!",
+  "ERROR_USER_NOT_FOUND": "User not found!",
+  "ERROR_EMAIL_NOT_SENT": "Email not sent!",
+  "VALIDATION_OTP_IDENTIFIER_REQUIRED": "Identifier field should have value",
+  "VALIDATION_OTP_IDENTIFIER_INVALID": "Identifier should be email or mobile",
+  "VALIDATION_OTP_OTP_INVALID": "Otp is wrong",
+  "VALIDATION_OTP_OTP_REQUIRED": "Otp field should have value"
+}
