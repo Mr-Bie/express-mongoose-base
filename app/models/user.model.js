@@ -9,11 +9,7 @@ const User = mongoose.model(
     phoneNumber: String,
     email: String,
     password: String,
-      plants: [{
-        type: Schema.Types.ObjectId,
-          ref: "Plant"
-
-      }]
+    isCompleted: Boolean,
   })
 );
 
