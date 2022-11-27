@@ -5,9 +5,7 @@ const otpCheckSchema = {
   properties: {
     identifier: {
       type: "string",
-      oneOf: [
-        { format: "email" } /*, { pattern: "^\\+[1-9]{1}[0-9]{3,14}$" }*/,
-      ],
+      oneOf: [{ format: "email" }, { pattern: "^\\+[1-9]{1}[0-9]{3,14}$" }],
     },
     otp: {
       type: "string",

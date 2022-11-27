@@ -94,7 +94,7 @@ const otp = async (req, res, next) => {
 
 const checkOtp = async (req, res, next) => {
   const { identifier, otp: otpCode } = req.body;
-  let user = await userRepository.findOne({ email: identifier });
+  let user = await userRepository.findOne({ identifier });
 
   if (!user)
     return res.error({
@@ -124,13 +124,9 @@ const checkOtp = async (req, res, next) => {
       status: 400,
     });
 
-  const token = await jwt.sign(
-    { key: validationCode.userId },
-    process.env.SECRET_KEY,
-    {
-      expiresIn: tokenConfig.expirationTime,
-    }
-  );
+  const token = await jwt.sign({ userId: user._id }, process.env.SECRET_KEY, {
+    expiresIn: tokenConfig.expirationTime,
+  });
 
   res.success({
     data: { token },
