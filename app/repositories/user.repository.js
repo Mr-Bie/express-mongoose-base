@@ -1,8 +1,12 @@
-const { User } = require("../models");
+const { User } = require("../models/index.model");
 
-const findOne = async ({ id, email, phoneNumber }) => {
+const findOne = async ({ id, email, phoneNumber, identifier }) => {
   return User.findOne({
-    $or: [{ _id: id }, { email }, { phoneNumber }],
+    $or: [
+      { _id: id },
+      { email: email || identifier },
+      { phoneNumber: phoneNumber || identifier },
+    ],
   });
 };
 
