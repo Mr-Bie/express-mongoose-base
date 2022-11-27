@@ -269,6 +269,11 @@ fabric.properties
 # comment the following lines
 !.yarn/cache
 
+# external directories
+public
+logs
+files
+
 # and uncomment the following lines
 # .pnp.*
 
