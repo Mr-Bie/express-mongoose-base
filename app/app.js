@@ -7,6 +7,9 @@ const i18Middleware = require("i18next-http-middleware");
 const mongoose = require("mongoose");
 const path = require("path");
 
+// Middlewares
+const morganMiddleware = require("./middlewares/morgan.middleware");
+
 class App {
   constructor() {
     this.init();
@@ -60,6 +63,9 @@ class App {
         console.error("Connection error", err);
         process.exit();
       });
+
+    // morgan logger middleware
+    app.use(morganMiddleware);
 
     // register routes
     require("../routes/index.router")(app);
