@@ -32,9 +32,6 @@ class App {
     app.use(i18Middleware.handle(i18n));
     app.use(express.json()); // parse request body as JSON
 
-    // register .env variables
-    require("dotenv").config();
-
     // response middleware
     app.use(require("./middlewares/response.middleware"));
 
