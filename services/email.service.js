@@ -9,7 +9,7 @@ const smtpPass = process.env.SMTP_PASS;
 const smtpSender = process.env.SMTP_SENDER;
 const smtpName = process.env.EMAIL_NAME;
 
-export const sendEmail = (to, subject, data) =>
+exports.sendEmail = (to, subject, data) =>
   new Promise(async (resolve, reject) => {
     let err, response;
     try {
