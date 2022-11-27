@@ -1,5 +1,5 @@
 {
-  "name": "breeze",
+  "name": "express-mongoose-base",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
