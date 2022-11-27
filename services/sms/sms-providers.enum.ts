@@ -1,5 +1,2 @@
-export enum SmsProviders {
-  ghasedak,
-  kavenegar,
-  parsgreen,
-}
+const SmsProviders = ["ghasedak", "kavenegar", "parsgreen"];
+module.exports = SmsProviders;
