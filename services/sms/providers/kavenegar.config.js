@@ -1,38 +1,36 @@
 // Dependencies
-const Kavenegar = require("kavenegar");
+const Kavenegar = require('kavenegar');
 
-// Constrains
-const KAVENEGAR_API_KEY = process.env.KAVENEGAR_API_KEY;
-
-// Config
-const OTP_TEMPLATE = "Test";
-
-let api = Kavenegar.KavenegarApi({
-  apikey: KAVENEGAR_API_KEY,
-});
-
-exports.send = (sender, receptors, data) => {
+exports.send = (apiKey, sender, receptors, data) => {
   return new Promise((resolve, reject) => {
+    const api = Kavenegar.KavenegarApi({
+      apikey: apiKey,
+    });
     const receptorsArray = Array.isArray(receptors) ? receptors : [receptors];
     api.Send(
       {
-        receptor: receptorsArray.join(","),
+        receptor: receptorsArray.join(','),
         message: data,
         sender,
       },
       function (response, status) {
         if (status === 200) resolve(JSON.stringify(response));
         else {
-          console.log(`error in sending sms : ${response}`);
+          console.log(
+            `error in sending sms : ${response} with status: ${status}`,
+          );
           reject(new Error(status));
         }
-      }
+      },
     );
   });
 };
 
-exports.sendOTP = (receptor, data) => {
+exports.sendOTP = (apiKey, receptor, data, otpTemplate) => {
   return new Promise((resolve, reject) => {
+    const api = Kavenegar.KavenegarApi({
+      apikey: apiKey,
+    });
     const receptorsArray = Array.isArray(receptor) ? receptor : [receptor];
     const dataArray = Array.isArray(data) ? data : [data];
 
@@ -40,15 +38,17 @@ exports.sendOTP = (receptor, data) => {
       {
         receptor: receptorsArray.shift(),
         token: dataArray.shift(),
-        template: OTP_TEMPLATE,
+        template: otpTemplate,
       },
       function (response, status) {
         if (status === 200) resolve(JSON.stringify(response));
         else {
-          console.log(`error in sending sms : ${response}`);
+          console.log(
+            `error in sending sms : ${response} with status: ${status}`,
+          );
           reject(new Error(status));
         }
-      }
+      },
     );
   });
 };

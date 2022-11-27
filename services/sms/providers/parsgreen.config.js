@@ -1,25 +1,11 @@
 // Dependencies
 const axios = require("axios");
 
-// Constrains
-const PARS_GREEN_API_KEY = process.env.PARS_GREEN_API_KEY;
 // Config
-const PARS_GREEN_SINGLE_SMS = "http://sms.parsgreen.ir/Apiv2/Message/SendSms";
-const PARS_GREEN_SINGLE_OTP = "http://sms.parsgreen.ir/Apiv2/Message/SendOtp";
-const OTP_TEMPLATE = "Test";
+const PARS_GREEN_SINGLE_SMS = 'http://sms.parsgreen.ir/Apiv2/Message/SendSms';
+const PARS_GREEN_SINGLE_OTP = 'http://sms.parsgreen.ir/Apiv2/Message/SendOtp';
 
-getSenders = async () =>
-  await axios.post(
-    "http://sms.parsgreen.ir/Apiv2/User/SmsNumber",
-    { NumberType: 0 },
-    {
-      headers: {
-        Authorization: "basic apikey:88F746EF-C8B5-4B2C-A6CF-7A4E87D05495",
-      },
-    }
-  );
-
-exports.send = (sender, receptors, data) => {
+exports.send = (apiKey, sender, receptors, data) => {
   return new Promise(async (resolve, reject) => {
     try {
       const receptorsArray = Array.isArray(receptors) ? receptors : [receptors];
@@ -32,18 +18,18 @@ exports.send = (sender, receptors, data) => {
         },
         {
           headers: {
-            Authorization: `basic apikey:${PARS_GREEN_API_KEY}`,
+            Authorization: `basic apikey:${apiKey}`,
           },
-        }
+        },
       );
-      resolve(response);
+      resolve(response.data);
     } catch (err) {
       reject(err);
     }
   });
 };
 
-exports.sendOTP = (receptor, data) => {
+exports.sendOTP = (apiKey, receptor, data, otpTemplate) => {
   return new Promise(async (resolve, reject) => {
     try {
       const receptorsArray = Array.isArray(receptor) ? receptor : [receptor];
@@ -54,15 +40,15 @@ exports.sendOTP = (receptor, data) => {
         {
           SmsCode: dataArray.shift(),
           Mobile: receptorsArray.shift(),
-          TemplateID: OTP_TEMPLATE,
+          TemplateID: otpTemplate,
         },
         {
           headers: {
-            Authorization: `basic apikey:${PARS_GREEN_API_KEY}`,
+            Authorization: `basic apikey:${apiKey}`,
           },
-        }
+        },
       );
-      resolve(response);
+      resolve(response.data);
     } catch (err) {
       reject(err);
     }
