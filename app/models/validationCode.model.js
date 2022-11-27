@@ -11,7 +11,7 @@ const ValidationCode = mongoose.model(
         required: true,
         index: { unique: true },
       },
-      code: { type: String, required: true },
+      code: { type: String, required: true, index: { unique: true } },
       sent_at: { type: Date, required: false },
     },
     { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
