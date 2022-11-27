@@ -1,4 +1,4 @@
-const { ValidationCode } = require("../models");
+const { ValidationCode } = require("../models/index.model");
 
 const store = async ({ userId, code }) => {
   const validationCode = new ValidationCode({
