@@ -11,7 +11,7 @@ exports.directoryCreator = (...paths) => {
       fs.mkdir(path.join(...paths), (err) => {
         err
           ? logger.error(err)
-          : logger.info(paths.join("/"), " Directory Created!");
+          : logger.info(paths.join("/") + " Directory Created!");
       });
   });
 };
@@ -20,7 +20,7 @@ exports.directoryCreatorSync = async (...paths) => {
   fs.exists(path.join(...paths), (exists) => {
     if (!exists) {
       fs.mkdirSync(path.join(...paths));
-      logger.info(paths.join("/"), " Directory Created!");
+      logger.info(paths.join("/") + " Directory Created!");
     }
   });
 };
@@ -30,7 +30,9 @@ exports.fileCreator = (...paths) => {
     if (!exists) {
       logger.info("exists: ", exists);
       fs.open(path.join(...paths), "wx", (err) => {
-        err ? logger.error(err) : logger.info(paths.join(""), " File Created!");
+        err
+          ? logger.error(err)
+          : logger.info(paths.join("") + " File Created!");
       });
     }
   });
@@ -40,7 +42,7 @@ exports.fileCreatorSync = (...paths) => {
   const exists = fs.existsSync(path.join(...paths));
   if (!exists) {
     fs.openSync(path.join(...paths), "wx");
-    logger.info(paths.join(...paths), " File Created!");
+    logger.info(paths.join(...paths) + " File Created!");
   }
 };
 
