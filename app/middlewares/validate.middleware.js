@@ -15,7 +15,7 @@ module.exports = (schema) => async (req, res, next) => {
       data: validate.errors.map((v) => {
         return { key: v.instancePath || null, message: req.t(v.message) };
       }),
-      message: req.t("ERROR_VALIDATION_FAILED"),
+      message: req.t("namespace:body_validation_failed"),
       status: 406,
     });
   next();
