@@ -10,6 +10,7 @@ const {
 // Services
 const EmailService = require("../../services/email.service");
 const SmsService = require("../../services/sms/sms.service");
+const logger = require("../../services/logger.service");
 
 // Constrains
 const { otp: otpConfig, token: tokenConfig } = require("../../config/auth");
@@ -55,7 +56,7 @@ const otp = async (req, res, next) => {
             req.t("auth:otp.send_message_pattern") + validationCode.code
           );
     } catch (err) {
-      next(err);
+      logger.error(err);
     }
     return res.success({
       message: req.t("auth:otp.success"),
@@ -86,7 +87,7 @@ const otp = async (req, res, next) => {
           req.t("auth:otp.send_message_pattern") + validationCode.code
         );
   } catch (err) {
-    next(err);
+    logger.error(err);
   }
 
   res.success({ message: req.t("auth:otp.success"), status: 200 });
