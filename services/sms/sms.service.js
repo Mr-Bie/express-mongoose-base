@@ -1,5 +1,5 @@
 // Utils
-const { SmsProviders } = require("./sms-providers.enum.ts");
+const SmsProviders = require("./sms-providers.js");
 const kavenegarConfig = require("./providers/kavenegar.config");
 const ghasedakConfig = require("./providers/ghasedak.config");
 const parsgreenConfig = require("./providers/parsgreen.config");
@@ -61,11 +61,7 @@ exports.sendOTP = (receptor, data) => {
 
 exports.send = (receptors, data) => {
   return new Promise(async (resolve, reject) => {
-    if (
-      !Object.values(SmsProviders)
-        .filter((v) => isNaN(Number(v)))
-        .includes(provider)
-    ) {
+    if (!SmsProviders.includes(provider)) {
       reject("invalid sms provider");
     }
 
