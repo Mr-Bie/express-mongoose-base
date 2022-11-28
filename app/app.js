@@ -33,6 +33,18 @@ class App {
         },
       });
     app.use(i18Middleware.handle(i18n));
+
+    // set cors headers
+    app.use((req, res, next) => {
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      res.setHeader("Access-Control-Allow-Methods", "OPTIONS, GET, POST");
+      res.setHeader(
+        "Access-Control-Allow-Headers",
+        "Content-Type,Authorization"
+      );
+      next();
+    });
+
     app.use(express.json()); // parse request body as JSON
 
     // response middleware
