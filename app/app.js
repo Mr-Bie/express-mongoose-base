@@ -90,6 +90,9 @@ class App {
     app.listen(port, () => {
       logger.info(`server running on port ${port}.`);
     });
+
+    // websocket server
+    require("../services/webSocket.service");
   }
 }
 
