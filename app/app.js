@@ -10,6 +10,9 @@ const path = require("path");
 // Middlewares
 const morganMiddleware = require("./middlewares/morgan.middleware");
 
+// Services
+const logger = require("../services/logger.service");
+
 class App {
   constructor() {
     this.init();
@@ -54,10 +57,10 @@ class App {
         }
       )
       .then(() => {
-        console.log("MongoDB connect successfully.");
+        logger.info("MongoDB connect successfully.");
       })
       .catch((err) => {
-        console.error("Connection error", err);
+        logger.error("Connection error", err);
         process.exit();
       });
 
@@ -73,7 +76,7 @@ class App {
     // start server
     const port = process.env.APP_PORT;
     app.listen(port, () => {
-      console.log(`server running on port ${port}.`);
+      logger.info(`server running on port ${port}.`);
     });
   }
 }
