@@ -11,10 +11,10 @@ const otpSchema = {
   },
   errorMessage: {
     properties: {
-      identifier: "VALIDATION_OTP_IDENTIFIER_INVALID",
+      identifier: "identifier field should be email or phone number",
     },
     required: {
-      identifier: "VALIDATION_OTP_IDENTIFIER_REQUIRED",
+      identifier: "identifier field is required",
     },
   },
 };
