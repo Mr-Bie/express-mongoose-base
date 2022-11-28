@@ -1,6 +1,9 @@
 // Dependencies
 const nodemailer = require("nodemailer");
 
+// Services
+const logger = require("../services/logger.service");
+
 // Constants
 const smtpHost = process.env.SMTP_HOST;
 const smtpPort = process.env.SMTP_PORT;
@@ -41,16 +44,14 @@ exports.sendEmail = (to, subject, data) =>
 
       await transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-          console.log(error);
-          return (err = error);
+          logger.error(error);
+          reject(error);
         }
-        console.log(`Email sent to ${to}`);
-        response = info;
+        logger.info(`Email sent to ${to}`);
+        resolve(info);
       });
     } catch (error) {
-      console.log(error);
-      err = error;
+      logger.error(error);
+      reject(error);
     }
-    if (err) reject(err);
-    resolve(response);
   });
